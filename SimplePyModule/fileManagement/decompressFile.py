@@ -4,21 +4,21 @@ import os
 
 def decompressFile(filepath):
     """
-    Descomprime archivos en formato ZIP o TAR.GZ.
+    Decompress files in ZIP or TAR.GZ.
 
     Args:
-    filepath (str): Ruta del archivo a descomprimir.
+    filepath (str): Path to the file.
 
     Returns:
-    str: Mensaje que indica el resultado de la descompresión.
+    str: Message with the operation status
     """
     if filepath.endswith('.zip'):
         with zipfile.ZipFile(filepath, 'r') as zip_ref:
             zip_ref.extractall(os.path.dirname(filepath))
-            return "Archivo ZIP descomprimido con éxito."
+            return "File correctly decompressed"
     elif filepath.endswith('.tar.gz'):
         with tarfile.open(filepath, 'r:gz') as tar_ref:
             tar_ref.extractall(os.path.dirname(filepath))
-            return "Archivo TAR.GZ descomprimido con éxito."
+            return "TAR.GZ decompressed correctly."
     else:
-        return "Error: El archivo no es .zip o .tar.gz."
+        return "Error: Make sure your file is either .zip o .tar.gz."

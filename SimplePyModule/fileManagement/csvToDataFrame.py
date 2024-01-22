@@ -3,17 +3,17 @@ import time
 
 def csvToDataFrame(filepaths):
     """
-    Lee múltiples archivos CSV y los combina en un único DataFrame de Pandas.
+    This function reads multiple CSV files and combines them into a single pandas DataFrame.
 
     Args:
-    filepaths (list): Lista de rutas de archivos CSV a leer.
+    filepaths (list): List of CSV path to read.
 
     Returns:
-    DataFrame: DataFrame de Pandas combinado.
+    DataFrame: A combined Pandas DataFrame.
     """
     start_time = time.time()
     dataframes = [pd.read_csv(file) for file in filepaths]
     merged_df = pd.concat(dataframes).drop_duplicates(subset='id').set_index('id')
     end_time = time.time()
-    print(f"Tiempo de procesamiento: {end_time - start_time} segundos")
+    print(f"Processed Time: {end_time - start_time} seconds")
     return merged_df

@@ -3,13 +3,13 @@ import time
 
 def csvToDictionary(filepaths):
     """
-    Lee múltiples archivos CSV y los combina en un único diccionario.
+    This function reads multiple CSV files and combines them into a single Dictionary.
 
     Args:
-    filepaths (list): Lista de rutas de archivos CSV a leer.
+    filepaths (list): List of CSV paths to read.
 
     Returns:
-    dict: Diccionario combinado con 'id' como claves.
+    dict: Dicctionary
     """
     start_time = time.time()
     data_dict = {}
@@ -23,5 +23,5 @@ def csvToDictionary(filepaths):
                 else:
                     data_dict[key] = row
     end_time = time.time()
-    print(f"Tiempo de procesamiento: {end_time - start_time} segundos")
+    print(f"Processed Time: {end_time - start_time} seconds")
     return data_dict

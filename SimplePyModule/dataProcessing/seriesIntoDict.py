@@ -1,3 +1,5 @@
+import pandas as pd
+
 def seriesIntoDict(df: pd.DataFrame) -> dict:
     """
     Creates an ordered dictionary with the series name as key and the full web address

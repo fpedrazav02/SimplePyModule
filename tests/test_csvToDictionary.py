@@ -1,18 +1,20 @@
 import unittest
-import pandas as pd
-from tu_paquete.file_decompression_and_reading import csvToDataFrame
+from SimplePyModule.fileManagement import csvToDictionary
 
-class TestCsvToDataFrame(unittest.TestCase):
-    def test_csv_to_dataframe(self):
-        # Aquí debes definir o cargar datos de ejemplo para probar tu función.
-        # Por ejemplo, puedes crear archivos CSV temporales o usar StringIO.
+class TestCsvToDictionary(unittest.TestCase):
 
-        # Llama a la función csvToDataFrame
-        # Verifica si el resultado es un DataFrame de Pandas
-        # y si cumple con las condiciones esperadas (por ejemplo, si tiene el índice 'id')
+    def test_csv_to_dictionary(self):
+        csv_file = 'data/TMDB_overview.csv'
+        series_dict = csvToDictionary([csv_file])
 
-        self.assertIsInstance(resultado, pd.DataFrame)
-        # Más aserciones según sea necesario
+        self.assertIsInstance(series_dict, dict)
+
+        for key, value in series_dict.items():
+            url = value.get('homepage', '') + value.get('poster_path', '')
+
+            # Verificar si la URL comienza con 'http://' o 'https://', o si es 'NOT AVAILABLE' o una cadena vacía
+            self.assertTrue(url.startswith('http://') or url.startswith('https://') or url == 'NOT AVAILABLE' or url == '')
 
 if __name__ == '__main__':
     unittest.main()
+

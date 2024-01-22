@@ -1,29 +1,27 @@
 import unittest
 import pandas as pd
-from io import StringIO
 from SimplePyModule.fileManagement import csvToDataFrame
 
 class TestCsvToDataFrame(unittest.TestCase):
-    def test_csv_to_dataframe(self):
-        # Crear datos de ejemplo como si fueran archivos CSV
-        csv_data1 = StringIO("""id,name,age
-                                1,Alice,30
-                                2,Bob,25""")
-        csv_data2 = StringIO("""id,name,age
-                                3,Charlie,35
-                                4,Diana,40""")
 
-        # Llama a la función csvToDataFrame con estos datos de prueba
-        resultado = csvToDataFrame([csv_data1, csv_data2])
+    def test_csv_to_dataframe(self):
+        # Define la ruta de los archivos CSV
+        csv_files = ['data/TMDB_info.csv', 'data/TMDB_overview.csv', 'data/TMDB_distribution.csv']
+
+        # Llama a la función csvToDataFrame
+        df = csvToDataFrame(csv_files)
 
         # Verifica si el resultado es un DataFrame de Pandas
-        self.assertIsInstance(resultado, pd.DataFrame)
+        self.assertIsInstance(df, pd.DataFrame)
 
-        # Verifica si el índice 'id' está presente y es único
-        self.assertTrue(resultado.index.is_unique)
-        self.assertIn('id', resultado.index)
+        # Verifica si las columnas clave están presentes en el DataFrame
+        expected_columns = ['name', 'original_name', 'genres', 'networks', 'overview']
+        for col in expected_columns:
+            self.assertIn(col, df.columns)
 
-        # Más aserciones según sea necesario, como comprobar la longitud del DataFrame, etc.
+        # Verifica si el 'id' es único y utilizado como índice
+        self.assertTrue(df.index.is_unique)
 
 if __name__ == '__main__':
     unittest.main()
+

@@ -1,16 +1,24 @@
 import unittest
 import os
-from tu_paquete.file_decompression_and_reading import decompressFile
+from SimplePyModule.fileManagement import decompressFile
 
 class TestDecompressFile(unittest.TestCase):
+
     def test_decompress_zip(self):
-        # Aquí deberías crear un archivo ZIP temporal para probar la descompresión
-        # Luego llamar a la función decompressFile y verificar si el archivo se descomprimió correctamente
+        test_zip_file = 'data/TMDB.zip'
+        self.assertTrue(os.path.exists(test_zip_file))
 
-        self.assertTrue(os.path.exists(ruta_descomprimida))
-        # Más aserciones según sea necesario
+        decompressFile(test_zip_file)
+        expected_files = ['data/TMDB_distribution.csv', 'data/TMDB_info.csv', 'data/TMDB_overview.csv']
 
-    # Puedes agregar más métodos de prueba para otros casos (como tar.gz o errores esperados)
+        for file in expected_files:
+            print(file)
+            self.assertTrue(os.path.exists(file))
+
+        # Eliminar CSVs
+        # for file in expected_files:
+        #     os.remove(file)
 
 if __name__ == '__main__':
     unittest.main()
+

@@ -14,7 +14,7 @@ def csvToDictionary(filepaths):
     start_time = time.time()
     data_dict = {}
     for filepath in filepaths:
-        with open(filepath, mode='r') as infile:
+        with open(filepath, mode='r', encoding='utf-8') as infile:
             reader = csv.DictReader(infile)
             for row in reader:
                 key = row.pop('id')

@@ -17,5 +17,5 @@ def addAirDays(df: pd.DataFrame) -> pd.DataFrame:
     df['air_days'] = (today - df['first_air_date']).dt.days
     df['air_days'] = df['air_days'].apply(lambda x: 0 if x < 0 else x)
     df['air_days'] = df['air_days'].fillna(0).clip(lower=0)
-    print(df.nlargest(2, 'air_days'))
+    print(df.nlargest(10, 'air_days'))
     return df

@@ -10,10 +10,10 @@
 
 - [Submódulos](#submódulos)
 - [Funciones](#funciones)
-  - [Módulo: Descompresión](#módulo-descompresión)
-  - [Módulo: Procesamiento](#módulo-procesamiento)
-  - [Módulo: Filtrado](#módulo-filtrado)
-  - [Módulo: Análisis Gráfico](#módulo-análisis-gráfico)
+  - [Módulo: fileManagement](#módulo-filemanagement)
+  - [Módulo: dataProcessing](#módulo-dataProcessing)
+  - [Módulo: dataFiltering](#módulo-dataFiltering)
+  - [Módulo: graphicalAnalisis](#módulo-graphicalAnalisis)
 
 - [Licenciamiento](#licenciamiento)
 
@@ -108,31 +108,36 @@ python .\tests\run_all_tests.py
 
 ## Funciones
 
-### Módulo: Descompresión
+### Módulo: fileManagement
 
 | Función                | Descripción                                      |
 | ---------------------- | ------------------------------------------------ |
-| Nombre de la Función 1 | Breve descripción de la Función 1                |
-| Nombre de la Función 2 | Breve descripción de la Función 2                |
+| **decompressFile**| Función que descomprime ficheros en formato zip y tar.gz.               |
+| **csvToDataFrame** | Función que lee csvs y los integra en un único dataframe                |
+| **csvToDictionary** | Función que lee csvs y los integra en un único diccionario               |
 
-### Módulo: Procesamiento
-
-| Función                | Descripción                                      |
-| ---------------------- | ------------------------------------------------ |
-| Nombre de la Función 1 | Breve descripción de la Función 1                |
-| Nombre de la Función 2 | Breve descripción de la Función 2                |
-
-### Módulo: Filtrado
+### Módulo: dataProcessing
 
 | Función                | Descripción                                      |
 | ---------------------- | ------------------------------------------------ |
-| Nombre de la Función 1 | Breve descripción de la Función 1                |
-| Nombre de la Función 2 | Breve descripción de la Función 2                |
+| **addAirDays** | Función que añade air_days al dataFrame                |
+| **seriesIntoDict** | Creación de un diccionario ordenado                |
 
-### Módulo: Análisis Gráfico
+### Módulo: dataFiltering
 
 | Función                | Descripción                                      |
 | ---------------------- | ------------------------------------------------ |
-| Nombre de la Función 1 | Breve descripción de la Función 1                |
-| Nombre de la Función 2 | Breve descripción de la Función 2                |
+| **canceledSeries** | Lista de las series que han empezado en 2023 y han sido canceladas                |
+| **filterKeywords** | Búsqueda de series de género *mystery* o *crime*                |
+| **jpDataframe** | Generación de dataframe cuyo idoma sea el japonés                |
 
+### Módulo: graphicalAnalisis
+
+| Función                | Descripción                                      |
+| ---------------------- | ------------------------------------------------ |
+| **seriesByDecade** | Series por décadas desde 1940                |
+| **seriesByGenre** | Series por género |
+| **seriesByStartYear** | Series por año de inicio                |
+
+# Licenciamiento
+Este proyecto está licenciado bajo la Licencia MIT - revisa el archivo [LICENSE](LICENSE) para más detalles.
